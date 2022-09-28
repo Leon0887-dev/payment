@@ -1,0 +1,23 @@
+
+<div class=" mb-5 ">
+    <h2 class="login-title">Entrar</h2>
+</div>
+
+<form class="form">
+    <div class="mb-4">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Senha</label>
+      <input type="password" class="form-control" id="password">
+    </div>
+
+    <div class="d-grid gap-2  col-sm-6 mx-auto ">
+        <button type="submit" class="btn btn-primary mt-4">Submit</button>
+    </div>
+  </form>
+
+  <div class="mt-4"> 
+    <p>Não é um usuário ? <a class="link-primary" [routerLink]="['novousuario']">Cadastre-se aqui</a></p>
+  </div>

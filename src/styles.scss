@@ -1,10 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+
+// #005e9f, #080e23, #083791
+
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
-html{
-    font-size: 62.5%;
+.login-title{
+    font-size: 2.3rem;
+}
+
+@media (min-width: 768px){
+    .login-title{
+        font-size: 3rem;
+    }
 }
