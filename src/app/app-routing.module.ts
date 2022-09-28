@@ -12,6 +12,10 @@ const routes: Routes = [
     loadChildren: () =>
       import('./components/home/home.module').then((m) => m.HomeModule),
   },
+  {
+    path: 'agendamentos',
+    loadChildren: () => import('./components/payment-scheduling/payment-scheduling.module').then(m => m.PaymentSchedulingModule)
+  }
 ];
 
 @NgModule({
