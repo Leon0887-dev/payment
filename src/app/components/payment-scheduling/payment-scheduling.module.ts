@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { PaymentSchedulingRoutingModule } from './payment-scheduling-routing.module';
 import { PaymentSchedulingComponent } from './payment-scheduling.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
+import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 
 
 @NgModule({
   declarations: [
     PaymentSchedulingComponent,
-    SchedulingComponent
+    SchedulingComponent,
+    AppointmentListComponent
   ],
   imports: [
     CommonModule,
