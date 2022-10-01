@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -5,6 +6,8 @@ import { PaymentSchedulingRoutingModule } from './payment-scheduling-routing.mod
 import { PaymentSchedulingComponent } from './payment-scheduling.component';
 import { SchedulingComponent } from './scheduling/scheduling.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
+import { FooterModule } from '../footer/footer.module';
+import { HeaderModule } from '../header/header.module';
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import { AppointmentListComponent } from './appointment-list/appointment-list.co
   ],
   imports: [
     CommonModule,
-    PaymentSchedulingRoutingModule
+    PaymentSchedulingRoutingModule,
+    HeaderModule,
+    FooterModule
   ]
 })
 export class PaymentSchedulingModule { }
