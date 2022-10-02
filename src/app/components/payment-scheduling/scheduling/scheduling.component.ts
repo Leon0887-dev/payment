@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-scheduling',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SchedulingComponent implements OnInit {
 
-  constructor() { }
+  paymentForm !: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.paymentForm = this.formBuilder.group({
+      paymentValue: [''],
+      paymentDate: [''],
+      description: ['']
+    })
   }
+  
+ schedulePayment(){
+    console.log(this.paymentForm.getRawValue());
+ }
 
 }

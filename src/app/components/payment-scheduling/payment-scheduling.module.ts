@@ -8,6 +8,7 @@ import { SchedulingComponent } from './scheduling/scheduling.component';
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { FooterModule } from '../footer/footer.module';
 import { HeaderModule } from '../header/header.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { HeaderModule } from '../header/header.module';
     CommonModule,
     PaymentSchedulingRoutingModule,
     HeaderModule,
-    FooterModule
+    FooterModule,
+    ReactiveFormsModule
   ]
 })
 export class PaymentSchedulingModule { }

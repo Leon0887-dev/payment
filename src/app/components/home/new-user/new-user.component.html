@@ -3,7 +3,7 @@
     <h2 class="login-title"> Cadastre-se</h2>
 </div>
 
-<form class="form" [formGroup]="newUserForms" (ngSubmit)="registerUser()">
+<form class="form" [formGroup]="newUserForms" (ngSubmit)="registerUser() ">
     <div class="mb-4">
         <label for="name" class="form-label">Nome Completo</label>
         <input type="text" class="form-control"  placeholder="Digite seu nome..." formControlName="fullName">
