@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentServiceService } from '../service/payment-service.service';
 
 @Component({
   selector: 'app-appointment-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppointmentListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private paymentService: PaymentServiceService) { }
 
   ngOnInit(): void {
   }
