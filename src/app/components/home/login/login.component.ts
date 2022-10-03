@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['agendamentos']);
       },
       (error) => {
-        console.log('errou');
+        alert('Usuario ou senha inválidos');
       }
     );
   }

@@ -40,9 +40,8 @@ export class NewUserComponent implements OnInit {
       this.newUserService.newRegister(newUser).subscribe(() =>{
         this.router.navigate([''])
       }, (error) =>{
-        console.log(error);
+        alert('Usuario ou senha inválidos');
       })
-
     }
     
   }

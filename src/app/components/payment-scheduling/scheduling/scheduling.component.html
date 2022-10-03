@@ -9,17 +9,33 @@
     <div class="col-md-3 mb-3">
         <label for="value" class="form-label">Valor*</label>
         <input type="number" class="form-control" id="value" formControlName="paymentValue">
+        <app-message-alert
+        *ngIf="paymentForm.get('paymentValue')?.errors?.['required'] && paymentForm.get('paymentValue')?.touched" 
+        mensagem="Campo obrigatório">
+        </app-message-alert>
+        <app-message-alert
+        *ngIf="paymentForm.get('paymentValue')?.errors?.['pattern']" 
+        mensagem="digite um valor válido">
+        </app-message-alert>
       </div>
 
     <div class="col-md-3 mb-3">
         <label for="date" class="form-label">Data*</label>
         <input type="date" class="form-control" id="date" formControlName="paymentDate">
+        <app-message-alert
+        *ngIf="paymentForm.get('paymentDate')?.errors?.['required'] && paymentForm.get('paymentDate')?.touched" 
+        mensagem="Campo obrigatório">
+        </app-message-alert>
       </div>
    
 
       <div class="col-md-7 ">
         <label for="description" class="form-label">Descrição</label>
         <textarea class="form-control" id="description" formControlName="description"></textarea>
+        <app-message-alert
+        *ngIf="paymentForm.get('description')?.errors?.['minlength'] && paymentForm.get('description')?.touched" 
+        mensagem="o campo deve conter mais caracteres">
+        </app-message-alert>
       </div>
 
       <div class=" d-md-block  mt-4">
