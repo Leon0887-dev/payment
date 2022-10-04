@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       this.tokenService.saveToken(token)
       this.router.navigate(['agendamentos']);
     },() => {
-      alert('Usuário inválido!');
+      alert('Usuário ou senha inválido!');
     })
       
   }
