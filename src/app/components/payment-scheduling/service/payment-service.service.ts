@@ -5,43 +5,54 @@ import { TokenService } from 'src/app/autenticacao/token.service';
 import { environment } from 'src/environments/environment';
 import { CreatePayment } from '../create-payment';
 
-
-const API = environment.apiURL;
+const URL = environment.apiURL;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentServiceService {
+  public _scheduleList: any = [];
 
-  
-
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
-
-  createPayment(payment: CreatePayment): Observable<CreatePayment>{
-    return this.http.post<CreatePayment>(`${API}/payments`, payment)
+  get scheduleList() {
+    return this._scheduleList;
   }
 
-
-  readPayments():Observable<CreatePayment[]>{
-    return this.http.get<CreatePayment[]>(`${API}/payments`)
+  set scheduleList(value: any) {
+    this._scheduleList.push(value);
   }
 
-  readPayment(idPayment: number):Observable<CreatePayment>{
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
-    return this.http.get<CreatePayment>(`${API}/payments/${idPayment}`)
+  createPayment(payment: CreatePayment): Observable<CreatePayment> {
+    return this.http.post<CreatePayment>(`${URL}/payments`, payment);
   }
 
-  updatePayments(idPayment: number, editPayment: CreatePayment):Observable<CreatePayment>{
+  readPayments(): Observable<CreatePayment[]> {
+    return this.http.get<CreatePayment[]>(`${URL}/payments`);
+  }
+
+  readPayment(idPayment: number): Observable<CreatePayment> {
+    return this.http.get<CreatePayment>(`${URL}/payments/${idPayment}`);
+  }
+
+  updatePayments(
+    idPayment: number,
+    editPayment: CreatePayment
+  ): Observable<CreatePayment> {
     const token = this.tokenService.returnToken();
-    const headers = new HttpHeaders().append('x-access-token', token )
-    return this.http.put<CreatePayment>(`${API}/payments/${idPayment}`,editPayment,{headers});
-
+    const headers = new HttpHeaders().append('x-access-token', token);
+    return this.http.put<CreatePayment>(
+      `${URL}/payments/${idPayment}`,
+      editPayment,
+      { headers }
+    );
   }
 
-  deletePayment(idPayment: number): Observable<CreatePayment>{
+  deletePayment(idPayment: number): Observable<CreatePayment> {
     const token = this.tokenService.returnToken();
-    const headers = new HttpHeaders().append('x-access-token', token )
-    return this.http.delete<CreatePayment>(`${API}/payments/${idPayment}`,{headers})
+    const headers = new HttpHeaders().append('x-access-token', token);
+    return this.http.delete<CreatePayment>(`${URL}/payments/${idPayment}`, {
+      headers,
+    });
   }
-
 }
