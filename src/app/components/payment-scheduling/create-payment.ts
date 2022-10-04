@@ -1,6 +1,6 @@
 export interface CreatePayment {
     id?: number
     paymentValue: string
-    paymentDate: Date
+    paymentDate: any;
     description?: string
 }
