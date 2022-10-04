@@ -4,11 +4,11 @@
 
 <form class="form" (ngSubmit)="login()" #loginForm="ngForm">
   <div class="mb-4">
-    <label for="text" class="form-label">Usuário</label>
+    <label for="email" class="form-label">Usuário</label>
     <input
       type="text"
       class="form-control"
-      [(ngModel)]="usuario" 
+      [(ngModel)]="email" 
       name="usuario"
       #campoUsuario="ngModel"
       required
