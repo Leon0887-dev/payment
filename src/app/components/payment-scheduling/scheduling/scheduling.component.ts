@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 import { PaymentServiceService } from '../service/payment-service.service';
-
 
 @Component({
   selector: 'app-scheduling',
@@ -10,8 +10,13 @@ import { PaymentServiceService } from '../service/payment-service.service';
 })
 export class SchedulingComponent implements OnInit {
   paymentForm!: FormGroup;
+  date: any;
+  scheduleList: any = [];
 
-  constructor(private formBuilder: FormBuilder, private paymentService: PaymentServiceService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private paymentService: PaymentServiceService
+  ) {}
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
@@ -26,17 +31,39 @@ export class SchedulingComponent implements OnInit {
       ],
       paymentDate: ['', [Validators.required]],
       description: ['', Validators.minLength(3)],
+      paymentHours: ['', Validators.required],
     });
   }
 
   schedulePayment() {
-   
-    if(this.paymentForm.valid){
-      const newPayment = this.paymentForm.getRawValue();
-      this.paymentService.createPayment(newPayment).subscribe(() =>{
+    if (this.paymentForm.valid) {
+      this.paymentService.createPayment(this.payload()).subscribe(() => {
         console.log('pagamento criado');
-      })
-    }
-    }
+      });
 
+      this.paymentService.scheduleList = this.paymentForm.value;
+      
+    }
+  }
+
+  formaterDateHours() {
+    const hours = this.paymentForm.get('paymentHours')?.value ?? '';
+    let date = this.paymentForm.get('paymentDate')?.value;
+
+    let m = moment(date, 'DD/MM/YYYY');
+
+    let dateFormated = m.format('DD-MM-YYYY');
+
+    return `${dateFormated} ${hours}`;
+  }
+
+  payload() {
+    const payloadPayments = {
+      paymentValue: this.paymentForm.get('paymentValue')?.value ?? '',
+      paymentDate: this.formaterDateHours(),
+      description: this.paymentForm.get('description')?.value ?? '',
+    };
+
+    return payloadPayments;
+  }
 }
