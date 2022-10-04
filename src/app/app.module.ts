@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
  import localePT from '@angular/common/locales/pt'
+import { AutenticacaoModule } from './autenticacao/autenticacao.module';
  registerLocaleData(localePT);
 
 
@@ -24,7 +25,8 @@ import { registerLocaleData } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    AutenticacaoModule
     
    
    
