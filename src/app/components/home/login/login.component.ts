@@ -20,25 +20,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // public login(): void {
-  //   this.authService.auth(this.email, this.senha).subscribe((res) => {
-  //     this.router.navigate(['agendamentos']);
-  //   },
-  //     (error) => {
-  //       alert('Usuario ou senha inválidos');
-  //     }
-  //   );
-  // }
-
   public login(): void {
     this.authService.auth(this.email, this.senha).subscribe((res) => {
       const token = res.body.access_token;
       this.tokenService.saveToken(token)
       this.router.navigate(['agendamentos']);
-    }),
-      () => {
-        alert('Usuário inválido!');
-      };
+    },() => {
+      alert('Usuário inválido!');
+    })
+      
   }
 
 }
