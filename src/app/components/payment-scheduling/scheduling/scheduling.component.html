@@ -21,13 +21,27 @@
 
     <div class="col-md-3 mb-3">
         <label for="date" class="form-label">Data*</label>
-        <input type="date" class="form-control" id="date" formControlName="paymentDate">
+        <input type="text" class="form-control" id="date" formControlName="paymentDate"  mask="d0/M0/0000" >
         <app-message-alert
         *ngIf="paymentForm.get('paymentDate')?.errors?.['required'] && paymentForm.get('paymentDate')?.touched" 
         mensagem="Campo obrigatório">
         </app-message-alert>
       </div>
-   
+
+    <div class="col-md-3 mb-3">
+      <label for="date" class="form-label">Hora*</label>
+      <select class="form-select form-select-md " aria-label=".form-select-lg example" formControlName="paymentHours">
+        <option value="10:00">10:00</option>
+        <option value="14:00">14:00</option>
+        <option value="17:00">17:00</option>
+      </select>
+      <app-message-alert
+      *ngIf="paymentForm.get('paymentHours')?.errors?.['required'] && paymentForm.get('paymentHours')?.touched" 
+      mensagem="Campo obrigatório">
+      </app-message-alert>
+      </div>
+ 
+      
 
       <div class="col-md-7 ">
         <label for="description" class="form-label">Descrição</label>
@@ -39,7 +53,7 @@
       </div>
 
       <div class=" d-md-block  mt-4">
-            <button class="btn btn-primary" type="submit"> Agendar</button>
+            <button class="btn btn-primary" type="submit" [disabled]="!paymentForm.valid"> Agendar</button>
       </div>
 </form>
 
