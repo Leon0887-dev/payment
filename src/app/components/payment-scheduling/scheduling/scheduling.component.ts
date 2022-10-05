@@ -47,7 +47,6 @@ export class SchedulingComponent implements OnInit {
       },(error) => alert('agendamento inválido, digite os campos corretamente!'));      
     }
 
-    this.readPayments();
     
   }
 
@@ -72,11 +71,7 @@ export class SchedulingComponent implements OnInit {
     return payloadPayments;
   }
 
-  readPayments(){
-    this.paymentService.readPayments().subscribe((res)=> {
-      this.paymentListService.paymentList = res.content
-    })
-  }
+ 
   
     
    
