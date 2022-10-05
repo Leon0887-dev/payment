@@ -12,14 +12,12 @@ export class AppointmentListComponent implements OnInit {
 
   paymentList!: any;
 
-  constructor(private paymentListService: PaymentListService, private paymentService: PaymentServiceService ) {
-    paymentListService.paymentList
+  constructor( private paymentService: PaymentServiceService ) {
    }
 
   ngOnInit(): void {
       this.paymentService.readPayments().subscribe(res =>{
         this.paymentList = res.content
-        console.log(this.paymentList);
       })
     }
     
