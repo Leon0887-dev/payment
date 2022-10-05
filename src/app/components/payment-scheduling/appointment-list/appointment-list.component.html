@@ -1,4 +1,6 @@
 
+
+<!-- <p class="" *ngIf="!list.length"> Favor realize seu agendamento!</p> -->
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -10,13 +12,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+      <tr *ngFor="let item of paymentList">
+        <td>{{item.paymentValue | currency:'BRL'}}</td>
+        <td>{{item.paymentDate |  date:'short'}}</td>
+        <td>{{item.description}}</td>
+        <td>{{item.status}}</td>
         <td>@mdo</td>
       </tr>
     </tbody>
   </table>
 
+  
