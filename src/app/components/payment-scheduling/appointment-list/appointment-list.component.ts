@@ -1,5 +1,7 @@
+import { PaymentServiceService } from './../service/payment-service.service';
+import { PaymentListService } from './../service/payment-list.service';
 import { Component, OnInit } from '@angular/core';
-import { PaymentServiceService } from '../service/payment-service.service';
+
 
 @Component({
   selector: 'app-appointment-list',
@@ -8,9 +10,21 @@ import { PaymentServiceService } from '../service/payment-service.service';
 })
 export class AppointmentListComponent implements OnInit {
 
-  constructor(private paymentService: PaymentServiceService) { }
+  paymentList!: any;
+
+  constructor(private paymentListService: PaymentListService, private paymentService: PaymentServiceService ) {
+    paymentListService.paymentList
+   }
 
   ngOnInit(): void {
+      this.paymentService.readPayments().subscribe(res =>{
+        this.paymentList = res.content
+        console.log(this.paymentList);
+      })
+    }
+    
   }
 
-}
+
+
+
