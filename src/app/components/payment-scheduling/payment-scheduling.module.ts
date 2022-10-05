@@ -10,6 +10,7 @@ import { FooterModule } from '../footer/footer.module';
 import { HeaderModule } from '../header/header.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageAlertModule } from '../message-alert/message-alert.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -24,7 +25,9 @@ import { MessageAlertModule } from '../message-alert/message-alert.module';
     HeaderModule,
     FooterModule,
     ReactiveFormsModule,
-    MessageAlertModule
+    MessageAlertModule,
+    NgxMaskModule
+
   ]
 })
 export class PaymentSchedulingModule { }
