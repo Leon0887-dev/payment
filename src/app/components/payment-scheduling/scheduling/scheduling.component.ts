@@ -1,3 +1,4 @@
+import { PaymentListService } from './../service/payment-list.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
@@ -11,12 +12,16 @@ import { PaymentServiceService } from '../service/payment-service.service';
 export class SchedulingComponent implements OnInit {
   paymentForm!: FormGroup;
   date: any;
-  scheduleList: any = [];
+  scheduleList!: any ;
+
 
   constructor(
     private formBuilder: FormBuilder,
-    private paymentService: PaymentServiceService
-  ) {}
+    private paymentService: PaymentServiceService,
+    private paymentListService: PaymentListService,
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.paymentForm = this.formBuilder.group({
@@ -37,13 +42,13 @@ export class SchedulingComponent implements OnInit {
 
   schedulePayment() {
     if (this.paymentForm.valid) {
-      this.paymentService.createPayment(this.payload()).subscribe(() => {
-        console.log('pagamento criado');
-      });
-
-      this.paymentService.scheduleList = this.paymentForm.value;
-      
+      this.paymentService.createPayment(this.payload()).subscribe((res) => {
+        console.log(res);
+      },(error) => alert('agendamento inválido, digite os campos corretamente!'));      
     }
+
+    this.readPayments();
+    
   }
 
   formaterDateHours() {
@@ -66,4 +71,13 @@ export class SchedulingComponent implements OnInit {
 
     return payloadPayments;
   }
+
+  readPayments(){
+    this.paymentService.readPayments().subscribe((res)=> {
+      this.paymentListService.paymentList = res.content
+    })
+  }
+  
+    
+   
 }
