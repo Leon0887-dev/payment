@@ -1,0 +1,40 @@
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    editar
+</button>
+
+ 
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Editar agendamento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="row">
+            <div class="col-6 mb-3">
+                <label for="value" class="form-label">Valor*</label>
+                <input type="number" class="form-control" id="value" formControlName="paymentValue">
+
+              </div>
+             <div class="col-6 mb-3">
+                <label for="date" class="form-label">Data*</label>
+                <input type="text" class="form-control" id="date" formControlName="paymentDate"  mask="d0/M0/0000" >
+              </div>
+
+              <div class="col-md-12">
+                <label for="description" class="form-label">Descrição</label>
+                <textarea class="form-control" id="description" formControlName="description"></textarea>
+            
+              </div>
+        
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Editar</button>
+          <button type="button" class="btn btn-primary">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
