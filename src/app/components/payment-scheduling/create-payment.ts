@@ -3,6 +3,7 @@ export interface CreatePayment {
     paymentValue: string
     paymentDate: any;
     description?: string
+    status?: string
 }
 
 

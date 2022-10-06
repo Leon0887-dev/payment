@@ -5,11 +5,13 @@ import { NgxMaskModule } from 'ngx-mask';
 
 
 
+
 @NgModule({
   declarations: [AppointmentListComponent],
   imports: [
     CommonModule,
     NgxMaskModule,
+   
   ],
   exports: [AppointmentListComponent]
 })
