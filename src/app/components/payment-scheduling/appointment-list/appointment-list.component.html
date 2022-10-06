@@ -1,6 +1,11 @@
 
 
 <!-- <p class="" *ngIf="!list.length"> Favor realize seu agendamento!</p> -->
+<div class="btn-group-sm mb-2 d-flex justify-content-end p-2" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-primary" (click)="getAllPayments()">todos</button>
+  <button type="button" class="btn btn-primary" (click)="getPending()">pendentes</button>
+  <button type="button" class="btn btn-primary" (click)="getPaid()">pagos</button>
+</div>
 <table class="table table-bordered table-hover">
     <thead>
       <tr>
