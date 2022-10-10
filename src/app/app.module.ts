@@ -3,7 +3,7 @@
 import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {NgxMaskModule, IConfig } from 'ngx-mask'
-import {ModalDialogModule} from 'ngx-modal-dialog';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,10 +27,7 @@ import { AutenticacaoModule } from './autenticacao/autenticacao.module';
     HttpClientModule,
     NgxMaskModule.forRoot(),
     AutenticacaoModule,
-    ModalDialogModule.forRoot(),
-    
-   
-   
+    NgbModule
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-br'}],
   bootstrap: [AppComponent]

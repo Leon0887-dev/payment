@@ -22,9 +22,37 @@
         <td>{{item.paymentDate |  date:'short'}}</td>
         <td>{{item.description}}</td>
         <td>{{item.status}}</td>
-        <td><app-modal-table></app-modal-table></td>
+        <td>
+          
+          <button (click)="editPayment(item, paymentModal)"> Editar</button>
+          
+
+        </td>
       </tr>
     </tbody>
   </table>
 
-  
+ 
+    <ng-template #paymentModal>
+      <form class="row p-2">
+        <div class="col-6 mb-3">
+            <label for="value" class="form-label">Valor*</label>
+            <input type="number" class="form-control" id="value">
+      
+          </div>
+         <div class="col-6 mb-3">
+            <label for="date" class="form-label">Data*</label>
+            <input type="text" class="form-control" id="date"   mask="d0/M0/0000" >
+          </div>
+          <div class="col-md-12">
+            <label for="description" class="form-label">Descrição</label>
+            <textarea class="form-control" id="description" ></textarea>
+          </div>
+          <div class="modal-footer d-md-block  mt-4">
+            <button type="submit" class="btn btn-secondary" >Editar</button>
+            <button type="button" class="btn btn-primary"  >Cancelar</button>
+          </div>
+      </form>
+    </ng-template>
+
+ 
