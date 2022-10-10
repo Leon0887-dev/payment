@@ -23,7 +23,7 @@ export class PaymentServiceService {
     return this.http.get<ResponsePayments>(`${URL}/payments`);
   }
 
-  readPayment(idPayment: number): Observable<ResponsePayments> {
+  readPayment(idPayment: string): Observable<ResponsePayments> {
     return this.http.get<ResponsePayments>(`${URL}/payments/${idPayment}`);
   }
 
@@ -34,7 +34,7 @@ export class PaymentServiceService {
     
     return this.http.put<CreatePayment>(
       `${URL}/payments/${idPayment}`,
-      editPayment
+      editPayment     
     );
   }
 

@@ -1,5 +1,5 @@
 export interface CreatePayment {
-    id?: number
+    id?: string
     paymentValue: string
     paymentDate: any;
     description?: string

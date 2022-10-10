@@ -5,12 +5,13 @@ import { CreatePayment } from '../create-payment';
   providedIn: 'root'
 })
 export class PaymentListService {
-  set(scheduleList: any) {
-    throw new Error('Method not implemented.');
-  }
+  
 
   public _paymentList!: any[]
 
+  
+  constructor() { }
+  
   get paymentList():any {
     return this._paymentList;
   }
@@ -18,6 +19,4 @@ export class PaymentListService {
   set paymentList(value: any){
     this._paymentList = value;
   }
-
-  constructor() { }
 }
