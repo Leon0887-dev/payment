@@ -7,23 +7,28 @@
   <button type="button" class="btn btn-primary" (click)="getPaid()">pagos</button>
 </div>
 <div class="contents ">
-  <table class="table table-bordered table-hover">
+  <table class="table table-striped table-hover">
       <thead class="sticky-top">
         <tr>
-          <th scope="col">Valor</th>
-          <th scope="col">Data</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">status</th>
-          <th scope="col">Opções</th>
+          <th scope="col" class="header-table">Valor</th>
+          <th scope="col"class="header-table">Data</th>
+          <th scope="col"class="header-table">Descrição</th>
+          <th scope="col"class="header-table">status</th>
+          <th scope="col"class="header-table">Opções</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of paymentList">
-          <td>{{item.paymentValue | currency:'BRL'}}</td>
-          <td>{{item.paymentDate |  date:'short'}}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.status}}</td>
-          <td *ngIf="item.status !== 'PAID'; else btnDisable" >
+          <td class="body-table
+          ">{{item.paymentValue | currency:'BRL'}}</td>
+          <td class="body-table
+          ">{{item.paymentDate |  date:'short'}}</td>
+          <td class="body-table
+          ">{{item.description}}</td>
+          <td class="body-table
+          ">{{item.status}}</td>
+          <td class="body-table
+          " *ngIf="item.status !== 'PAID'; else btnDisable" >
             
             <button class="btn btn-primary me-2" (click)="editPayment(item, paymentModal)"> Editar</button>
             <button class="btn btn-danger" (click)="openDeletePayment(item, deletePayment)"> Deletar</button>
@@ -37,7 +42,8 @@
 </div>
 
 <ng-template #btnDisable>
-  <td>
+  <td class="body-table
+  ">
     <button class="btn btn-primary me-2" disabled>Editar</button>
     <button class="btn btn-danger" disabled> Deletar</button>
   </td>

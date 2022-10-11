@@ -1,6 +1,23 @@
 .contents{
     height: 530px;
     overflow:  hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
+table{
+    border-radius: 10px;
+}
+
+
+.header-table{
+    background-color: #005e9f;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.body-table{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
