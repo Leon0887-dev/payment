@@ -1,25 +1,17 @@
 import {  FormGroup } from "@angular/forms";
+import * as moment from 'moment';
+import { AbstractControl } from "@angular/forms";
 
 
-export function dateValidator(formGroup: FormGroup){
-    const dateForm = formGroup.get('paymentDate')?.value ?? '';
-    const date = new Date();
+export function dateValidator(control: AbstractControl){
+    const dateForm = control.value ?? '';
+    const date = moment().format('DD/MM/YYYY');
 
-    if( dateForm >= date ){
-        date.toDateString().replace('/','');
-
-        // date[0] //03
-        // date[1] //10
-        // date[2] // 2022
-
-
-        // date[0] > dateNow[0] 
-        // date[1] > datenow[1]
-
+    if( dateForm < date ){
         return {date: true}
+        
     }
-
-    return null
     
+    return null
 
 }

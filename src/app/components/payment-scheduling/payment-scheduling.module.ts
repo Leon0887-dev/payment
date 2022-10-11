@@ -9,6 +9,7 @@ import { HeaderModule } from '../header/header.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageAlertModule } from '../message-alert/message-alert.module';
 import { AppointmentListModule } from './appointment-list/appointment-list.module';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [PaymentSchedulingComponent, SchedulingComponent],
@@ -20,6 +21,7 @@ import { AppointmentListModule } from './appointment-list/appointment-list.modul
     ReactiveFormsModule,
     MessageAlertModule,
     AppointmentListModule,
+    NgxMaskModule
   ],
 })
 export class PaymentSchedulingModule {}

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { PaymentServiceService } from '../service/payment-service.service';
+import { dateValidator } from './date.validator';
 
 @Component({
   selector: 'app-scheduling',
@@ -34,7 +35,7 @@ export class SchedulingComponent implements OnInit {
           ),
         ]),
       ],
-      paymentDate: ['', [Validators.required]],
+      paymentDate: ['', [Validators.required, dateValidator]],
       description: ['', Validators.minLength(3)],
       paymentHours: ['', Validators.required],
     });
