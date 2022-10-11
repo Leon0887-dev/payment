@@ -4,6 +4,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { dateValidator } from '../scheduling/date.validator';
 
 @Component({
   selector: 'app-appointment-list',
@@ -35,7 +36,7 @@ export class AppointmentListComponent implements OnInit {
           ),
         ]),
       ],
-      paymentDate: ['', [Validators.required]],
+      paymentDate: ['', [Validators.required, dateValidator]],
       description: ['', Validators.minLength(3)],
       paymentHours: ['', Validators.required],
     });
@@ -68,9 +69,11 @@ export class AppointmentListComponent implements OnInit {
 
   editPayment(item: any, modal: TemplateRef<any>) {
     this.modalService.open(modal);
+
     this.paymentItem = item;
+
     this.paymentForm.controls['paymentDate'].setValue(
-      this.paymentItem.paymentDate
+      moment(this.paymentItem.paymentDate).format('DD/MM/YYYY')
     );
     this.paymentForm.controls['paymentValue'].setValue(
       this.paymentItem.paymentValue

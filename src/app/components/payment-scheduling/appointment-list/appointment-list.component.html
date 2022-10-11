@@ -1,37 +1,48 @@
 
 
-<!-- <p class="" *ngIf="!list.length"> Favor realize seu agendamento!</p> -->
+
 <div class="btn-group-sm mb-2 d-flex justify-content-end p-2" role="group" aria-label="Basic example">
   <button type="button" class="btn btn-primary" (click)="getAllPayments()">todos</button>
   <button type="button" class="btn btn-primary" (click)="getPending()">pendentes</button>
   <button type="button" class="btn btn-primary" (click)="getPaid()">pagos</button>
 </div>
-<table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Valor</th>
-        <th scope="col">Data</th>
-        <th scope="col">Descrição</th>
-        <th scope="col">status</th>
-        <th scope="col">Opções</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of paymentList">
-        <td>{{item.paymentValue | currency:'BRL'}}</td>
-        <td>{{item.paymentDate |  date:'short'}}</td>
-        <td>{{item.description}}</td>
-        <td>{{item.status}}</td>
-        <td>
+<div class="contents ">
+  <table class="table table-bordered table-hover">
+      <thead class="sticky-top">
+        <tr>
+          <th scope="col">Valor</th>
+          <th scope="col">Data</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">status</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of paymentList">
+          <td>{{item.paymentValue | currency:'BRL'}}</td>
+          <td>{{item.paymentDate |  date:'short'}}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.status}}</td>
+          <td *ngIf="item.status !== 'PAID'; else btnDisable" >
+            
+            <button class="btn btn-primary me-2" (click)="editPayment(item, paymentModal)"> Editar</button>
+            <button class="btn btn-danger" (click)="openDeletePayment(item, deletePayment)"> Deletar</button>
+  
+            
+          </td>
           
-          <button class="btn btn-primary me-2" (click)="editPayment(item, paymentModal)"> Editar</button>
-          <button class="btn btn-danger" (click)="openDeletePayment(item, deletePayment)"> Deletar</button>
-          
+        </tr>
+      </tbody>
+    </table>
+</div>
 
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<ng-template #btnDisable>
+  <td>
+    <button class="btn btn-primary me-2" disabled>Editar</button>
+    <button class="btn btn-danger" disabled> Deletar</button>
+  </td>
+</ng-template>
+  
 
  
     <ng-template #paymentModal>
@@ -44,6 +55,14 @@
          <div class="col-6 mb-3">
             <label for="date" class="form-label">Data*</label>
             <input type="text" class="form-control" id="date"   mask="d0/M0/0000" formControlName="paymentDate">
+            <app-message-alert
+        *ngIf="paymentForm.get('paymentDate')?.errors?.['required'] && paymentForm.get('paymentDate')?.touched" 
+        mensagem="Campo obrigatório">
+        </app-message-alert>
+        <app-message-alert
+        *ngIf="paymentForm.get('paymentDate')?.errors?.['date'] && paymentForm.get('paymentDate')?.touched" 
+        mensagem="data não permitida">
+        </app-message-alert>
           </div>
           <div class="col-md-3 mb-3">
             <label for="date" class="form-label">Hora*</label>

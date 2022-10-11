@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AppointmentListComponent } from './appointment-list.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { MessageAlertModule } from '../../message-alert/message-alert.module';
 
 @NgModule({
   declarations: [AppointmentListComponent],
@@ -11,7 +12,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
     CommonModule,
     NgxMaskModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MessageAlertModule
   ],
   exports: [AppointmentListComponent]
 })
