@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppointmentListComponent } from './appointment-list.component';
@@ -9,7 +10,8 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     NgxMaskModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   exports: [AppointmentListComponent]
 })

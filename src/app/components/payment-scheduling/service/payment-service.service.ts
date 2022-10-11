@@ -29,16 +29,16 @@ export class PaymentServiceService {
 
   updatePayments(
     idPayment: number,
-    editPayment: CreatePayment
-  ): Observable<CreatePayment> {
+    editPayment: any
+  ): Observable<any> {
     
-    return this.http.put<CreatePayment>(
+    return this.http.put<any>(
       `${URL}/payments/${idPayment}`,
       editPayment     
     );
   }
 
-  deletePayment(idPayment: number): Observable<CreatePayment> {
-    return this.http.delete<CreatePayment>(`${URL}/payments/${idPayment}`);
+  deletePayment(idPayment: string): Observable<any> {
+    return this.http.delete<any>(`${URL}/payments/${idPayment}`);
   }
 }

@@ -24,7 +24,8 @@
         <td>{{item.status}}</td>
         <td>
           
-          <button (click)="editPayment(item, paymentModal)"> Editar</button>
+          <button class="btn btn-primary me-2" (click)="editPayment(item, paymentModal)"> Editar</button>
+          <button class="btn btn-danger" (click)="openDeletePayment(item, deletePayment)"> Deletar</button>
           
 
         </td>
@@ -34,25 +35,39 @@
 
  
     <ng-template #paymentModal>
-      <form class="row p-2">
+      <form class="row p-2" [formGroup]="paymentForm">
         <div class="col-6 mb-3">
-            <label for="value" class="form-label">Valor*</label>
-            <input type="number" class="form-control" id="value">
+            <label for="value" class="form-label" >Valor*</label>
+            <input type="number" class="form-control" id="value" formControlName="paymentValue">
       
           </div>
          <div class="col-6 mb-3">
             <label for="date" class="form-label">Data*</label>
-            <input type="text" class="form-control" id="date"   mask="d0/M0/0000" >
+            <input type="text" class="form-control" id="date"   mask="d0/M0/0000" formControlName="paymentDate">
           </div>
+          <div class="col-md-3 mb-3">
+            <label for="date" class="form-label">Hora*</label>
+            <select class="form-select form-select-md " aria-label=".form-select-lg example" formControlName="paymentHours">
+              <option value="10:00">10:00</option>
+              <option value="14:00">14:00</option>
+              <option value="17:00">17:00</option>
+            </select>
+            </div>
           <div class="col-md-12">
             <label for="description" class="form-label">Descrição</label>
-            <textarea class="form-control" id="description" ></textarea>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
           </div>
           <div class="modal-footer d-md-block  mt-4">
-            <button type="submit" class="btn btn-secondary" >Editar</button>
-            <button type="button" class="btn btn-primary"  >Cancelar</button>
+            <button type="submit" class="btn btn-secondary" (click)="saveEditPayment()">Salvar</button>
+            <button type="button" class="btn btn-primary" (click)="closeModal()" >Cancelar</button>
           </div>
       </form>
+    </ng-template>
+
+    <ng-template #deletePayment>
+      <h4>Deseja cancelar o pagamento ?</h4>
+      <button (click)="deleteoPayment()">Sim</button>
+      <button (click)="closeModal()">Não</button>
     </ng-template>
 
  
