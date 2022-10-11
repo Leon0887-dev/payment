@@ -11,13 +11,13 @@ export class ExistsUserService {
   constructor(private newUserService: NewUserServiceService) { }
 
 
-  userAlreadyExists(){
-    return (control: AbstractControl) =>{
-      return control.valueChanges.pipe(
-        switchMap( nameUser => this.newUserService.checkExistingUser(nameUser)),
-        map(userExists => userExists ? {userExisting: true} : null),
-        first()
-      )
-    }
-  }
+  // userAlreadyExists(){
+  //   return (control: AbstractControl) =>{
+  //     return control.valueChanges.pipe(
+  //       switchMap( nameUser => this.newUserService.checkExistingUser(nameUser)),
+  //       map(userExists => userExists ? {userExisting: true} : null),
+  //       first()
+  //     )
+  //   }
+  // }
 }

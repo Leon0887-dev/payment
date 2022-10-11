@@ -15,7 +15,7 @@ export class NewUserServiceService {
   }
 
 
-  checkExistingUser(nameUser: string){
-    return this.http.get(`http://localhost:8080/user/${nameUser}`)
-  }
+  // checkExistingUser(nameUser: string){
+  //   return this.http.get(`http://localhost:8080/user/${nameUser}`)
+  // }
 }

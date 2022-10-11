@@ -24,9 +24,9 @@ export class NewUserComponent implements OnInit {
   ngOnInit(): void {
     this.newUserForms = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      userName: ['', [Validators.required, , minusculoValidator], [this.existsUserService.userAlreadyExists()]],
-      fullName: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      nameUser: ['', [Validators.required, , minusculoValidator]],
+      nome: ['', [Validators.required]],
+      senha: ['', [Validators.required]],
     },
     {
       validators: [userPasswordDifferent]
@@ -38,6 +38,7 @@ export class NewUserComponent implements OnInit {
     if(this.newUserForms.valid){
       const newUser = this.newUserForms.getRawValue();
       this.newUserService.newRegister(newUser).subscribe(() =>{
+        console.log('cadastrado');
         this.router.navigate([''])
       }, (error) =>{
         alert('Usuario ou senha inválidos');
@@ -46,3 +47,6 @@ export class NewUserComponent implements OnInit {
     
   }
 }
+
+
+// [this.existsUserService.userAlreadyExists()]
