@@ -1,23 +1,46 @@
 .contents{
     height: 530px;
-    overflow:  hidden;
     overflow-y: auto;
+    overflow-x: auto;
 }
 
-table{
-    border-radius: 10px;
+.btn-size{
+   border: none;
+   margin-bottom: 5px;
 }
+
+
 
 
 .header-table{
     background-color: #005e9f;
     color: #fff;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
 }
 
 .body-table{
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
+}
+.icon-sort{
+    font-size: 0.8rem;
+    vertical-align: text-top;
+    cursor: pointer;
+}
+
+
+
+@media (min-width: 768px) {
+    .btn-size{
+        margin-right: 5px;
+    }
+
+    .header-table{
+        font-size: 1.3rem;
+    }
+    .body-table{
+        font-size: 1.2rem;
+    }
 }
