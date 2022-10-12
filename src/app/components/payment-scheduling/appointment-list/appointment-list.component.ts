@@ -1,10 +1,9 @@
 import { PaymentServiceService } from './../service/payment-service.service';
-import { PaymentListService } from './../service/payment-list.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
-import { dateValidator } from '../scheduling/date.validator';
+import { dateValidatorEdit } from '../scheduling/date.validator';
 
 @Component({
   selector: 'app-appointment-list',
@@ -36,16 +35,13 @@ export class AppointmentListComponent implements OnInit {
           ),
         ]),
       ],
-      paymentDate: ['', [Validators.required, dateValidator]],
+      paymentDate: ['', [Validators.required, dateValidatorEdit]],
       description: ['', Validators.minLength(3)],
       paymentHours: ['', Validators.required],
     });
   }
 
-  openModal(modal: TemplateRef<any>) {
-    this.modalService.open(modal);
-  }
-
+  
   getAllPayments() {
     this.paymentService.readPayments().subscribe((res) => {
       this.paymentAllList = res.content;
