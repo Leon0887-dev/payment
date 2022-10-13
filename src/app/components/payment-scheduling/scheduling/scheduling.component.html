@@ -1,12 +1,12 @@
 
 
-<div class="login-title p-3">
+<div class="login-title ">
     <h2>Agende seu Pagamento</h2>
 </div>
 
-<form class="row mt-4 p-4" [formGroup]="paymentForm" (ngSubmit)="schedulePayment()" >
+<form class="row mt-4 justify-content-center" [formGroup]="paymentForm" (ngSubmit)="schedulePayment()" >
 
-    <div class="col-md-3 mb-3">
+    <div class=" col-sm-5 col-md-2 mb-3">
         <label for="value" class="form-label">Valor*</label>
         <input type="number" class="form-control" id="value" formControlName="paymentValue">
         <app-message-alert
@@ -19,7 +19,7 @@
         </app-message-alert>
       </div>
 
-    <div class="col-md-3 mb-3">
+    <div class=" col-sm-5 col-md-2 mb-3">
         <label for="date" class="form-label">Data*</label>
         <input type="text" class="form-control" id="date" formControlName="paymentDate"  mask="d0/M0/0000" >
         <app-message-alert
@@ -32,7 +32,7 @@
         </app-message-alert>
       </div>
 
-    <div class="col-md-3 mb-3">
+    <div class="col-sm-5 col-md-2 mb-3">
       <label for="date" class="form-label">Hora*</label>
       <select class="form-select form-select-md " aria-label=".form-select-lg example" formControlName="paymentHours">
         <option value="10:00">10:00</option>
@@ -47,17 +47,17 @@
  
       
 
-      <div class="col-md-7 ">
+      <div class="col-sm-5 col-md-4 d-block">
         <label for="description" class="form-label">Descrição</label>
-        <textarea class="form-control" id="description" formControlName="description"></textarea>
+        <input  class="form-control" id="description" formControlName="description">
         <app-message-alert
         *ngIf="paymentForm.get('description')?.errors?.['minlength'] && paymentForm.get('description')?.touched" 
         mensagem="o campo deve conter mais caracteres">
         </app-message-alert>
       </div>
 
-      <div class=" d-md-block  mt-4">
-            <button class="btn btn-primary" type="submit" [disabled]="!paymentForm.valid"> Agendar</button>
+      <div class="  d-flex mt-4 justify-content-center">
+            <button class="btn  btn-size" type="submit" [disabled]="!paymentForm.valid"> Agendar</button>
       </div>
 </form>
 

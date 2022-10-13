@@ -9,20 +9,29 @@
    margin-bottom: 5px;
 }
 
+.btn-delete{
+    background-color:#E63946 ;
+    color: #F1FAEE;
+}
+.btn-edit{
+    background-color:#1D3557;
+    color: #F1FAEE;
+}
 
 
 
 .header-table{
-    background-color: #005e9f;
-    color: #fff;
+    background-color: #1D3557;
+    color: #F1FAEE;
     text-align: center;
     font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .body-table{
     text-align: center;
     font-size: 1.1rem;
-    font-weight: 500;
+    font-weight: 400;
 }
 .icon-sort{
     font-size: 0.8rem;

@@ -41,7 +41,6 @@ export class AppointmentListComponent implements OnInit {
     });
   }
 
-  
   getAllPayments() {
     this.paymentService.readPayments().subscribe((res) => {
       this.paymentAllList = res.content;
@@ -98,34 +97,38 @@ export class AppointmentListComponent implements OnInit {
     return `${dateFormated} ${hours}`;
   }
 
-
   saveEditPayment() {
     let obj = {
-      paymentDate: this.formaterDateHours()
-    }
+      paymentDate: this.formaterDateHours(),
+    };
     this.paymentService
       .updatePayments(this.paymentItem.id, obj)
       .subscribe((res) => {
-       this.closeModal()
-       this.getAllPayments()
+        this.closeModal();
+        this.getAllPayments();
       });
   }
 
-  openDeletePayment(item: any, modal: TemplateRef<any>){
+  openDeletePayment(item: any, modal: TemplateRef<any>) {
     this.modalService.open(modal);
     this.paymentItem = item;
   }
 
-  deleteoPayment(){
-    this.paymentService.deletePayment(this.paymentItem.id).subscribe(res =>{
+  deleteoPayment() {
+    this.paymentService.deletePayment(this.paymentItem.id).subscribe((res) => {
       console.log('deletou');
-      this.closeModal()
-       this.getAllPayments()
-    })
+      this.closeModal();
+      this.getAllPayments();
+    });
+  }
+
+ 
+  tableSort() {
+  
+    
   }
 
   closeModal() {
     this.modalService.dismissAll();
-    
   }
 }
