@@ -15,6 +15,7 @@ export class AppointmentListComponent implements OnInit {
   paymentList!: any;
   paymentForm!: FormGroup;
   paymentItem!: any;
+  count = 0;
 
   constructor(
     private paymentService: PaymentServiceService,
@@ -52,7 +53,7 @@ export class AppointmentListComponent implements OnInit {
     this.paymentList = this.paymentAllList;
     this.paymentList = this.paymentList.filter(
       (item: any) => item.status === 'PAID'
-    );
+    ); 
   }
 
   getPending() {
@@ -124,8 +125,21 @@ export class AppointmentListComponent implements OnInit {
 
  
   tableSort() {
-  
+    if(this.count > 2) this.count = 0;
     
+    switch (this.count){
+      case 0:
+        this.paymentAllList.sort((a,b) => a.paymentValue - b.paymentValue);
+        break;
+      case 1:
+        this.paymentAllList.sort((a,b) => b.paymentValue - a.paymentValue);
+        break;
+      case 2: 
+         this.getAllPayments();
+         break;
+    }
+    
+    this.count ++
   }
 
   closeModal() {
