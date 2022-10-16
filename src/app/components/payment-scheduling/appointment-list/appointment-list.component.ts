@@ -106,7 +106,7 @@ export class AppointmentListComponent implements OnInit {
       .updatePayments(this.paymentItem.id, obj)
       .subscribe((res) => {
         this.closeModal();
-        this.getAllPayments();
+        location.reload();
       });
   }
 
@@ -119,14 +119,13 @@ export class AppointmentListComponent implements OnInit {
     this.paymentService.deletePayment(this.paymentItem.id).subscribe((res) => {
       console.log('deletou');
       this.closeModal();
-      this.getAllPayments();
+      location.reload();
     });
   }
 
  
   tableSort() {
     if(this.count > 2) this.count = 0;
-    
     switch (this.count){
       case 0:
         this.paymentAllList.sort((a,b) => a.paymentValue - b.paymentValue);

@@ -6,7 +6,7 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable()
 export class AutenticacaoInterceptor implements HttpInterceptor {
@@ -19,7 +19,7 @@ export class AutenticacaoInterceptor implements HttpInterceptor {
       headers: request.headers.set('Authorization', `Bearer ${token}`)
     })
 
-    return next.handle(dupReq);
+    return next.handle(dupReq)
 
   }
 }

@@ -45,6 +45,7 @@ export class SchedulingComponent implements OnInit {
     if (this.paymentForm.valid) {
       this.paymentService.createPayment(this.payload()).subscribe((res) => {
         console.log(res);
+        location.reload();
       },(error) => alert('agendamento inválido, digite os campos corretamente!'));      
     }
 
