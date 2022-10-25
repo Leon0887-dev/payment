@@ -1,63 +1,65 @@
 
-<div class="mb-5 ">
-    <h2 class="login-title"> Cadastre-se</h2>
+<div class="new-user container-md">
+  <div class="mb-5 ">
+      <h2 class="login-title"> Cadastre-se</h2>
+  </div>
+  
+  <form class="form " [formGroup]="newUserForms" (ngSubmit)="registerUser()">
+      <div class="mb-4">
+          <label for="name" class="form-label">Nome Completo</label>
+          <input type="text" class="form-control"  placeholder="Digite seu nome..." formControlName="nome">
+          <app-message-alert
+           *ngIf="newUserForms.get('nome')?.errors?.['required'] && newUserForms.get('nome')?.touched"
+           mensagem="campo obrigatório">
+          </app-message-alert>
+  
+  
+        </div>
+      <div class="mb-4">
+          <label for="name" class="form-label">Usuário</label>
+          <input type="text" class="form-control"  placeholder="Digite seu nome..." formControlName="nameUser">
+          <app-message-alert
+          *ngIf="newUserForms.get('nameUser')?.errors?.['required'] && newUserForms.get('nameUser')?.touched"
+          mensagem="campo obrigatório">
+         </app-message-alert>
+         <app-message-alert
+           *ngIf="newUserForms.get('nameUser')?.errors?.['minusculo'] && newUserForms.get('nameUser')?.touched"
+           mensagem="usuario deve ser em letra minuscula">
+          </app-message-alert>
+  
+          <!-- <app-message-alert
+           *ngIf="newUserForms.get('userName')?.errors?.['userExisting']"
+           mensagem="usuario já existe">
+          </app-message-alert> -->
+  
+        </div>
+        <div class="mb-4">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="Digite seu E-mail..." formControlName="email">
+          <app-message-alert
+          *ngIf="newUserForms.get('email')?.errors?.['required'] && newUserForms.get('email')?.touched"
+          mensagem="campo obrigatório">
+         </app-message-alert>
+         <app-message-alert
+         *ngIf="newUserForms.get('email')?.errors?.['email'] && newUserForms.get('email')?.touched "
+         mensagem="E-mail incorreto">
+        </app-message-alert>
+        </div>
+        <div class="mb-4">
+          <label for="password" class="form-label">Senha</label>
+          <input type="password" class="form-control" id="password" placeholder="Digite sua senha" formControlName="senha">
+          <app-message-alert
+          *ngIf="newUserForms.get('senha')?.errors?.['required'] && newUserForms.get('senha')?.touched"
+          mensagem="campo obrigatório">
+         </app-message-alert>
+         <app-message-alert
+          *ngIf="newUserForms.errors?.['equalsUserPassword']"
+          mensagem="senha deve ser diferente do usuário">
+         </app-message-alert>
+        </div>
+  
+  
+        <button class="btn btn-primary me-2" [disabled]="!newUserForms.valid">Cadastrar</button>
+        <button class="btn btn-secondary" [routerLink]="['/home']">voltar </button>
+  </form>
 </div>
-
-<form class="form" [formGroup]="newUserForms" (ngSubmit)="registerUser()">
-    <div class="mb-4">
-        <label for="name" class="form-label">Nome Completo</label>
-        <input type="text" class="form-control"  placeholder="Digite seu nome..." formControlName="nome">
-        <app-message-alert
-         *ngIf="newUserForms.get('nome')?.errors?.['required'] && newUserForms.get('nome')?.touched" 
-         mensagem="campo obrigatório">
-        </app-message-alert>
-        
-      
-      </div>
-    <div class="mb-4">
-        <label for="name" class="form-label">Usuário</label>
-        <input type="text" class="form-control"  placeholder="Digite seu nome..." formControlName="nameUser">
-        <app-message-alert
-        *ngIf="newUserForms.get('nameUser')?.errors?.['required'] && newUserForms.get('nameUser')?.touched" 
-        mensagem="campo obrigatório">
-       </app-message-alert>
-       <app-message-alert
-         *ngIf="newUserForms.get('nameUser')?.errors?.['minusculo'] && newUserForms.get('nameUser')?.touched" 
-         mensagem="usuario deve ser em letra minuscula">
-        </app-message-alert>
-
-        <!-- <app-message-alert
-         *ngIf="newUserForms.get('userName')?.errors?.['userExisting']" 
-         mensagem="usuario já existe">
-        </app-message-alert> -->
-
-      </div>
-      <div class="mb-4">
-        <label for="email" class="form-label">E-mail</label>
-        <input type="email" class="form-control" id="email" placeholder="Digite seu E-mail..." formControlName="email">
-        <app-message-alert
-        *ngIf="newUserForms.get('email')?.errors?.['required'] && newUserForms.get('email')?.touched"
-        mensagem="campo obrigatório">
-       </app-message-alert>
-       <app-message-alert 
-       *ngIf="newUserForms.get('email')?.errors?.['email'] && newUserForms.get('email')?.touched "
-       mensagem="E-mail incorreto">
-      </app-message-alert>
-      </div>
-      <div class="mb-4">
-        <label for="password" class="form-label">Senha</label>
-        <input type="password" class="form-control" id="password" placeholder="Digite sua senha" formControlName="senha">
-        <app-message-alert
-        *ngIf="newUserForms.get('senha')?.errors?.['required'] && newUserForms.get('senha')?.touched" 
-        mensagem="campo obrigatório">
-       </app-message-alert>  
-       <app-message-alert
-        *ngIf="newUserForms.errors?.['equalsUserPassword']" 
-        mensagem="senha deve ser diferente do usuário">
-       </app-message-alert>
-      </div>
-    
-
-      <button class="btn btn-primary me-2" [disabled]="!newUserForms.valid">Cadastrar</button>
-      <button class="btn btn-secondary" [routerLink]="['/home']">voltar </button>
-</form>
