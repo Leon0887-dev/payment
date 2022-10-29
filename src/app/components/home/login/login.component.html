@@ -14,11 +14,6 @@
         #campoUsuario="ngModel"
         required
       />
-
-      <app-message-alert
-        *ngIf="campoUsuario.invalid && campoUsuario.touched"
-        mensagem="usuário obrigatório"
-      ></app-message-alert>
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Senha</label>
@@ -30,17 +25,12 @@
         #campoSenha="ngModel"
         required
       />
-      <app-message-alert
-        *ngIf="campoSenha.invalid && campoSenha.touched"
-        mensagem="Senha obrigatória"
-      ></app-message-alert>
     </div>
 
     <div class="d-grid gap-2 col-sm-6 mx-auto">
       <button
         type="submit"
         class="btn mt-4 btn-edit"
-        [disabled]="loginForm.invalid"
       >
         Entrar
       </button>
