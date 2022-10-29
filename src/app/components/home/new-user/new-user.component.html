@@ -1,7 +1,7 @@
 
-<div class="new-user container-md">
-  <div class="mb-5 ">
-      <h2 class="login-title"> Cadastre-se</h2>
+<div class="new-user container-md ">
+  <div class="mb-5">
+      <h2 class="login-title "> Cadastre-se</h2>
   </div>
   
   <form class="form " [formGroup]="newUserForms" (ngSubmit)="registerUser()">
@@ -45,7 +45,7 @@
          mensagem="E-mail incorreto">
         </app-message-alert>
         </div>
-        <div class="mb-4">
+        <div class="mb-5">
           <label for="password" class="form-label">Senha</label>
           <input type="password" class="form-control" id="password" placeholder="Digite sua senha" formControlName="senha">
           <app-message-alert
@@ -59,7 +59,7 @@
         </div>
   
   
-        <button class="btn btn-primary me-2" [disabled]="!newUserForms.valid">Cadastrar</button>
+        <button class="btn btn-edit me-2" [disabled]="!newUserForms.valid">Cadastrar</button>
         <button class="btn btn-secondary" [routerLink]="['/home']">voltar </button>
   </form>
 </div>
