@@ -7,6 +7,9 @@ import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+
 import { registerLocaleData } from '@angular/common';
  import localePT from '@angular/common/locales/pt'
 import { AutenticacaoModule } from './autenticacao/autenticacao.module';
@@ -27,7 +30,13 @@ import { AutenticacaoModule } from './autenticacao/autenticacao.module';
     HttpClientModule,
     NgxMaskModule.forRoot(),
     AutenticacaoModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [{provide: LOCALE_ID, useValue: 'pt-br'}],
   bootstrap: [AppComponent]
