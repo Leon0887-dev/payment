@@ -13,11 +13,47 @@
 .btn-delete{
     background-color:#E63946 ;
     color: #F1FAEE;
+
+    &:hover{
+        background-color:#e63947b2 ;
+    }
 }
 .btn-edit{
     background-color:#1D3557;
     color: #F1FAEE;
+    &:hover{
+        background-color:#1d35579a ;
+    }
 }
+
+
+.btn-all{
+    border-radius: 10px 0 0 10px;
+    background-color: #457B9D;
+    &:hover{
+        background-color:#1D3557;
+        color: #F1FAEE;
+    }
+}
+
+.btn-pending{
+    border-radius: 0 0 0 0;
+    background-color: #457B9D;
+    &:hover{
+        background-color:#1D3557;
+        color: #F1FAEE;
+    }
+}
+
+.btn-paid{
+    border-radius: 0 10px 10px 0;
+    background-color: #457B9D;
+    &:hover{
+        background-color:#1D3557;
+        color: #F1FAEE;
+    }
+}
+
 
 
 
