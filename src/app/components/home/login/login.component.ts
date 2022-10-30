@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   public login(): void {
     this.authService.auth(this.email, this.senha).subscribe((res) => {
       const token = res.body.access_token;
+      const exp = res.body.expires_in; 
+      console.log(exp);
       this.tokenService.saveToken(token)
       this.router.navigate(['agendamentos']);
     },() => {

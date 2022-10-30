@@ -5,6 +5,7 @@ import { ExistsUserService } from '../service/exists-user.service';
 import { NewUserServiceService } from '../service/new-user-service.service';
 import { minusculoValidator } from './minusculo.validator';
 import { userPasswordDifferent } from './user-password-validator';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-user',
@@ -18,7 +19,8 @@ export class NewUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private newUserService: NewUserServiceService,
     private existsUserService: ExistsUserService,
-    private router: Router
+    private router: Router,
+    private toastrService: ToastrService,
   ) {}
 
   ngOnInit(): void {
@@ -38,10 +40,10 @@ export class NewUserComponent implements OnInit {
     if(this.newUserForms.valid){
       const newUser = this.newUserForms.getRawValue();
       this.newUserService.newRegister(newUser).subscribe(() =>{
-        console.log('cadastrado');
+        this.toastrService.success('úsuario cadastrado com sucesso');
         this.router.navigate([''])
       }, (error) =>{
-        alert('Usuario ou senha inválidos');
+        this.toastrService.error('Error ao realizar cadastro');
       })
     }
     
